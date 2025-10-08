@@ -3,7 +3,7 @@ from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 from datetime import datetime
 from .db import init_db
-from agents import SchedulerAgent
+from .agents import SchedulerAgent
 from .leads_api import router as leads_router
 from .db import init_db as initdb
 # at very top of app/main_crewai.py (or main entry)
