@@ -3,7 +3,7 @@ import streamlit as st
 import requests, datetime, io, pandas as pd
 
 st.set_page_config(layout="wide")
-API_BASE = st.text_input("API base URL", ""https://insurance-admin-drg8.onrender.com")
+API_BASE = st.text_input("API base URL", "https://insurance-admin-drg8.onrender.com")
 
 st.title("InsureAI Desk — Dashboard")
 
