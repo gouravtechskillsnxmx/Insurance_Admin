@@ -2,7 +2,7 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
-from db import SessionLocal, Lead, Reminder
+from .db import SessionLocal, Lead, Reminder
 import pandas as pd
 from datetime import datetime
 

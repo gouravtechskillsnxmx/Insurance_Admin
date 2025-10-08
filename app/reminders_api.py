@@ -2,7 +2,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List
-from db import SessionLocal, Reminder
+from .db import SessionLocal, Reminder
 from datetime import datetime
 
 router = APIRouter(prefix="/reminders")
