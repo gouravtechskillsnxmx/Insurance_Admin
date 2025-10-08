@@ -2,7 +2,7 @@ import os, json
 from datetime import datetime, timedelta
 import openai
 from .db import SessionLocal, Lead, Reminder
-from twilio_client import place_tts_call
+from .twilio_client import place_tts_call
 try:
     from polly_s3 import synthesize_speech_to_s3
 except Exception:
