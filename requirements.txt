@@ -17,3 +17,5 @@ python-dotenv
 pandas
 openpyxl        
 python-multipart
+uvicorn[standard]>=0.21.0
+
