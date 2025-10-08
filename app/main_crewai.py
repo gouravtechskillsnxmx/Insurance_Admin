@@ -2,15 +2,15 @@ import os
 from fastapi import FastAPI, BackgroundTasks
 from pydantic import BaseModel
 from datetime import datetime
-from db import init_db
+from .db import init_db
 from agents import SchedulerAgent
-from leads_api import router as leads_router
-from db import init_db as initdb
+from .leads_api import router as leads_router
+from .db import init_db as initdb
 # at very top of app/main_crewai.py (or main entry)
 from dotenv import load_dotenv
 load_dotenv()
 from datetime import datetime
-from reminders_api import router as reminders_router
+from .reminders_api import router as reminders_router
 
 init_db()
 app = FastAPI(title="InsureAI Desk - CrewAI Orchestrator")
@@ -19,6 +19,28 @@ app.include_router(reminders_router)
 
 # existing /crew/schedule_reminder endpoint...
 # (keep your endpoint that triggers SchedulerAgent; unchanged)
+
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://your-frontend-domain.vercel.app",  # add your Vercel domain
+]
+
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=origins,
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
+)
+
+@app.get("/_health")
+def health():
+    return {"status": "ok"}
+
+
 
 
 class ScheduleReq(BaseModel):
